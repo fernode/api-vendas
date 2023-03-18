@@ -1,6 +1,7 @@
 import AppErrors from '@shared/errors/appErrors'
 import cors from 'cors'
 import express, { Request, Response } from 'express'
+import 'reflect-metadata'
 import router from './routes'
 
 const app = express()

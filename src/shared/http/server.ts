@@ -1,14 +1,20 @@
 import AppErrors from '@shared/errors/appErrors'
 import cors from 'cors'
+import * as dotenv from 'dotenv'
 import express, { Request, Response } from 'express'
 import 'reflect-metadata'
 import router from './routes'
+dotenv.config()
+
+import { AppDataSource } from '@shared/infra/typeorm'
 
 const app = express()
 app.use(express.json())
 app.use(cors())
 
 app.use(router)
+
+AppDataSource.initialize()
 
 app.use((error: Error, request: Request, response: Response) => {
 	if (error instanceof AppErrors) {

@@ -1,7 +1,7 @@
 import AppErrors from '@shared/errors/appErrors'
 import cors from 'cors'
 import * as dotenv from 'dotenv'
-import express, { Request, Response } from 'express'
+import express, { NextFunction, Request, Response } from 'express'
 import 'reflect-metadata'
 import router from './routes'
 dotenv.config()
@@ -16,18 +16,20 @@ app.use(router)
 
 AppDataSource.initialize()
 
-app.use((error: Error, request: Request, response: Response) => {
-	if (error instanceof AppErrors) {
-		return response.status(error.statusCode).json({
-			status: 'error',
-			message: error.message,
-		})
-	}
+app.use(
+	(error: Error, request: Request, response: Response, _next: NextFunction) => {
+		if (error instanceof AppErrors) {
+			return response.status(error.statusCode).json({
+				status: 'error',
+				message: error.message,
+			})
+		}
 
-	return response.status(500).json({
-		status: 'error',
-		message: 'Internal server error',
-	})
-})
+		return response.status(500).json({
+			status: 'error',
+			message: 'Internal server error',
+		})
+	},
+)
 
 app.listen(3333, () => console.log('Server is running on port 3333 🚀'))

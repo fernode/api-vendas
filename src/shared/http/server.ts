@@ -2,6 +2,7 @@ import AppErrors from '@shared/errors/appErrors'
 import cors from 'cors'
 import * as dotenv from 'dotenv'
 import express, { NextFunction, Request, Response } from 'express'
+import 'express-async-errors'
 import 'reflect-metadata'
 import router from './routes'
 dotenv.config()

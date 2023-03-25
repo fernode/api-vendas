@@ -8,12 +8,15 @@ import router from './routes'
 dotenv.config()
 
 import { AppDataSource } from '@shared/infra/typeorm'
+import { errors } from 'celebrate'
 
 const app = express()
 app.use(express.json())
 app.use(cors())
 
 app.use(router)
+
+app.use(errors())
 
 AppDataSource.initialize()
 

@@ -1,20 +1,39 @@
+import AppErrors from '@shared/errors/appErrors'
 import { AppDataSource } from '@shared/infra/typeorm'
 import { User } from '../entities/User'
 
 export const UsersRepository = AppDataSource.getRepository(User).extend({
-	findByEmail(email: string): Promise<User | unknown> {
-		return this.findOne({
+	async findByEmail(email: string): Promise<User> {
+		const user = await this.findOne({
 			where: { email },
 		})
+
+		if (!user) {
+			throw new AppErrors('User not found.', 404)
+		}
+
+		return user
 	},
-	findById(id: string): Promise<User | unknown> {
-		return this.findOne({
+	async findById(id: string): Promise<User> {
+		const user = await this.findOne({
 			where: { id },
 		})
+
+		if (!user) {
+			throw new AppErrors('User not found.', 404)
+		}
+
+		return user
 	},
-	findbyName(name: string): Promise<User | unknown> {
-		return this.findOne({
+	async findbyName(name: string): Promise<User> {
+		const user = await this.findOne({
 			where: { name },
 		})
+
+		if (!user) {
+			throw new AppErrors('User not found.', 404)
+		}
+
+		return user
 	},
 })

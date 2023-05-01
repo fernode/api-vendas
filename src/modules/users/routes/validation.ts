@@ -7,3 +7,10 @@ export const validationBodyUsers = celebrate({
 		password: Joi.string().required(),
 	},
 })
+
+export const validationBodySession = celebrate({
+	[Segments.BODY]: {
+		email: Joi.string().email().required(),
+		password: Joi.string().required(),
+	},
+})

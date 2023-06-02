@@ -1,3 +1,4 @@
+import auth from '@config/auth'
 import AppErrors from '@shared/errors/appErrors'
 import { compare } from 'bcrypt'
 import { sign } from 'jsonwebtoken'
@@ -38,9 +39,9 @@ class CreateSessionService {
 					id: user.id,
 				},
 			},
-			'b19f9beac0197df92f41529f7165ded5',
+			auth.jwt.secret,
 			{
-				expiresIn: '1d',
+				expiresIn: auth.jwt.expireIn,
 			},
 		)
 

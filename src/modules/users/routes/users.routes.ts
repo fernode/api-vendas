@@ -1,6 +1,6 @@
 import { Router } from 'express'
+import { isAuthenticated } from '../../../shared/http/middlewares/isAuthenticated'
 import { UserController } from '../controllers/UsersController'
-import { isAuthenticated } from '../middlewares/isAuthenticated'
 import { validationBodyUsers } from './validation'
 
 const usersRouter = Router()

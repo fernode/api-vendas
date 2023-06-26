@@ -1,6 +1,6 @@
 import AppErrors from '@shared/errors/appErrors'
-import { User } from '../entities/User'
-import { UsersRepository } from '../repository/UsersRepository'
+import { User } from '../typeorm/entities/User'
+import { UsersRepository } from '../typeorm/repository/UsersRepository'
 
 type CreateUserServiceParams = {
 	name: string

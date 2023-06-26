@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { CreateSessionService } from '../typeorm/services/CreateSessionService'
+import { CreateSessionService } from '../services/CreateSessionService'
 
 class SessionsController {
 	async execute(req: Request, res: Response): Promise<Response> {

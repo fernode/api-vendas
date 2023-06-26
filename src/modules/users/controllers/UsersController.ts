@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt'
 import { Request, Response } from 'express'
-import { CreateUserService } from '../typeorm/services/CreateUserService'
-import { ListUserService } from '../typeorm/services/ListUserService'
+import { CreateUserService } from '../services/CreateUserService'
+import { ListUserService } from '../services/ListUserService'
 class UserController {
 	public async index(req: Request, res: Response): Promise<Response> {
 		const listUserService = new ListUserService()

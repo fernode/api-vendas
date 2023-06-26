@@ -1,5 +1,5 @@
 import AppErrors from '@shared/errors/appErrors'
-import { ProductsRepository } from '../repository/ProductsRepository'
+import { ProductsRepository } from '../typeorm/repository/ProductsRepository'
 
 type DeleteProductServiceParams = {
 	id: string

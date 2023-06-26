@@ -2,8 +2,8 @@ import auth from '@config/auth'
 import AppErrors from '@shared/errors/appErrors'
 import { compare } from 'bcrypt'
 import { sign } from 'jsonwebtoken'
-import { User } from '../entities/User'
-import { UsersRepository } from '../repository/UsersRepository'
+import { User } from '../typeorm/entities/User'
+import { UsersRepository } from '../typeorm/repository/UsersRepository'
 
 type CreateSessionUserParams = {
 	email: string

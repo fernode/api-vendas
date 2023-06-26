@@ -1,6 +1,6 @@
 import AppErrors from '@shared/errors/appErrors'
-import { Product } from '../entities/Product'
-import { ProductsRepository } from '../repository/ProductsRepository'
+import { Product } from '../typeorm/entities/Product'
+import { ProductsRepository } from '../typeorm/repository/ProductsRepository'
 
 type CreateProductServiceParams = {
 	name: string

@@ -1,3 +1,4 @@
+import uploadConfig from '@config/uploads'
 import AppErrors from '@shared/errors/appErrors'
 import cors from 'cors'
 import * as dotenv from 'dotenv'
@@ -5,6 +6,7 @@ import express, { NextFunction, Request, Response } from 'express'
 import 'express-async-errors'
 import 'reflect-metadata'
 import router from './routes'
+
 dotenv.config()
 
 import { AppDataSource } from '@shared/infra/typeorm'
@@ -17,6 +19,7 @@ app.use(cors())
 app.use(router)
 
 app.use(errors())
+app.use('/files', express.static(uploadConfig.directory))
 
 AppDataSource.initialize()
 
